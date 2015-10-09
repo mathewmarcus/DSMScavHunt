@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+// Katie Roth
+// 10/9
+//Working on List for Scavenger hunt
+
 public class List extends AppCompatActivity {
 
     @Override
