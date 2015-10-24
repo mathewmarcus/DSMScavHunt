@@ -3,4 +3,8 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_landing_page">LandingPage</string>
+    <string name="title_activity_completed_page">CompletedPage</string>
+    <string name="title_activity_incorrect_page">IncorrectPage</string>
+    <string name="title_activity_help_page">HelpPage</string>
 </resources>

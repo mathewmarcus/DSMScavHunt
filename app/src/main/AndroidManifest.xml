@@ -8,13 +8,29 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".TaskPage"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".LandingPage"
+            android:label="@string/title_activity_landing_page" >
+        </activity>
+        <activity
+            android:name=".CompletedPage"
+            android:label="@string/title_activity_completed_page" >
+        </activity>
+        <activity
+            android:name=".IncorrectPage"
+            android:label="@string/title_activity_incorrect_page" >
+        </activity>
+        <activity
+            android:name=".HelpPage"
+            android:label="@string/title_activity_help_page" >
         </activity>
     </application>
 
