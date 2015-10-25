@@ -8,5 +8,13 @@
 
     <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    
+    <!--> Katie Roth
+    Added a button to start the bulldog parade<-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_start"
+        android:id="@+id/button_start"/>
 
 </RelativeLayout>
