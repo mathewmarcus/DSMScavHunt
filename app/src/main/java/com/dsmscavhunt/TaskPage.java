@@ -17,7 +17,6 @@ import java.io.File;
 public class TaskPage extends AppCompatActivity {
 
     Button button;
-    ImageView imageView;
     static final int CAM_REQUEST = 1;
 
     @Override
@@ -25,7 +24,6 @@ public class TaskPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_page);
         button = (Button) findViewById(R.id.button);
-        imageView = (ImageView) findViewById(R.id.image_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,13 +50,6 @@ public class TaskPage extends AppCompatActivity {
         }
 
         return image_file;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        String path = "sdcard/camera_app/cam_image.jpg";
-
-        imageView.setImageDrawable(Drawable.createFromPath(path));
     }
 
     @Override

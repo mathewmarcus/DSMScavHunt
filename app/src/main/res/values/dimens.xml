@@ -3,8 +3,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <!-- Blake - Added photo dimension info-->
-    <dimen name="photo_height">500dp</dimen>
-    <dimen name="photo_width">500dp</dimen>
+    <!-- Blake - Added photo button dimension info-->
     <dimen name="button_width">200dp</dimen>
 </resources>
