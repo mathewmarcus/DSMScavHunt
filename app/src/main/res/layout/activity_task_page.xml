@@ -5,15 +5,21 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".List">
 
-    <TextView android:text="@string/title_activity_task_page" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <!--> Katie Roth
-Added a button to start the bulldog parade<-->
+    <!-- Blake Martin - camera buttons and image view -->
     <Button
-        android:layout_width="wrap_content"
+        android:id="@+id/button"
+        android:text="@string/take_photo"
+        android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
-        android:text="@string/button_start"
-        android:id="@+id/button_start"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentTop="true" />
+
+    <ImageView
+        android:layout_width="@dimen/photo_width"
+        android:layout_height="@dimen/photo_height"
+        android:id="@+id/image_button"
+        android:layout_gravity="center_horizontal"
+        android:rotation="90"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
