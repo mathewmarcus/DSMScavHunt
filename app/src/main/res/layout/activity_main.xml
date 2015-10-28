@@ -9,6 +9,16 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/cam_button"
+        android:text="@string/take_photo"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="71dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Map View"
         android:id="@+id/mapButton"
         android:layout_marginBottom="148dp"
