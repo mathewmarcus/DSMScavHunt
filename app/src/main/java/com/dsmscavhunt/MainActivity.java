@@ -1,10 +1,8 @@
 package com.dsmscavhunt;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,17 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         TextView scavNumber = (TextView)findViewById(R.id.scavNumber);
         TextView scavName = (TextView)findViewById(R.id.scavName);
@@ -44,10 +32,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         DBHandler dbh = new DBHandler(this);
 
 
-        dbh.addScavItem(new ScavItem("Meredith", "5678 Forest Avenue", "up", R.drawable.bulldog1));
-        dbh.addScavItem(new ScavItem("Olmstead", "1234 University Boulevard", "up", R.drawable.bulldog2));
-        dbh.addScavItem(new ScavItem("Cowles", "3734 28th Street", "up", R.drawable.bulldog3));
-        dbh.addScavItem(new ScavItem("Howard", "504 Park Avenue", "up", R.drawable.bulldog4));
+        dbh.addScavItem(new ScavItem("Aliber", "2847 University Avenue, Des Moines, IA 50311", "left", R.drawable.aliberbulldog));
+        dbh.addScavItem(new ScavItem("Meredith", "2805 University Avenue, Des Moines, IA 50311", "right", R.drawable.meredith));
+        dbh.addScavItem(new ScavItem("Olmsted (outside)", "2875 University Avenue, Des Moines, IA 50311", "diagonal", R.drawable.olmsted));
+        dbh.addScavItem(new ScavItem("Cheeseburger", "1315 30th Street, Des Moines, IA 50311", "straight", R.drawable.cheeseburger));
+        dbh.addScavItem(new ScavItem("West Village One", "1325 31st Street, Des Moines, IA 50311", "crooked", R.drawable.westvillage1));
+        dbh.addScavItem(new ScavItem("West Village Two", "1325 31st Street, Des Moines, IA 50311", "sharp left", R.drawable.westvillage2));
+        dbh.addScavItem(new ScavItem("Bookstore", "3003 Forest Ave, Des Moines, IA 50311", "sharp right", R.drawable.bulldog1));
+        dbh.addScavItem(new ScavItem("Lab Coat (Cline)", "2802 Forest Avenue, Des Moines, IA 50311", "merge right", R.drawable.labcoat));
+        dbh.addScavItem(new ScavItem("President", "2507 University Avenue, Des Moines, IA 50311", "merge left", R.drawable.president));
+        dbh.addScavItem(new ScavItem("Biker", "2507 University Avenue, IA 50311", "go in circles", R.drawable.biker));
 
 
         List<ScavItem> scavItems = dbh.getAllScavItems();
@@ -105,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             int rowNumbertoDisplay = Integer.parseInt(((String) scavNumber.getText()).trim());
 
-            if (rowNumbertoDisplay >= 4) {
+            if (rowNumbertoDisplay >= 9) {
                 rowNumbertoDisplay = 0;
             }
 
@@ -117,6 +111,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             scavImage.setImageResource(scavItems.get(rowNumbertoDisplay).get_image());
 
             rowNumbertoDisplay++;
+        }
+        else if (v.getId() == R.id.mapButton) {
+            DBHandler dbh = new DBHandler(this);
+            int numRows = dbh.getScavItemCount();
+            List<ScavItem> scavItems = dbh.getAllScavItems();
+
+
+            TextView scavNumber = (TextView) findViewById(R.id.scavNumber);
+
+            int rowNumbertoDisplay = Integer.parseInt(((String) scavNumber.getText()).trim());
+
+            Intent i = new Intent(this, MapsActivity.class);
+            i.putExtra("address", scavItems.get(rowNumbertoDisplay).get_address());
+            startActivity(i);
         }
     }
 }
