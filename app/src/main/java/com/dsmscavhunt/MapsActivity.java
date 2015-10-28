@@ -68,7 +68,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // Add a marker in Sydney and move the camera
         mMap.addMarker(new MarkerOptions().position(scavDestination).title("Bulldog"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(scavDestination));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(scavDestination, 13.0f));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(scavDestination, 17.0f));
     }
 
     public LatLng stringToLatLong(String musicVenue) {
