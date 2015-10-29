@@ -22,7 +22,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
+    public static final String TAG = MainActivity.class.getSimpleName();
     Button button;
     ImageView imageView;
     static final int CAM_REQUEST = 1;
@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         TextView scavNumber = (TextView)findViewById(R.id.scavNumber);
         TextView scavName = (TextView)findViewById(R.id.scavName);
@@ -55,11 +54,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         List<ScavItem> scavItems = dbh.getAllScavItems();
-        scavNumber.setText(" " + String.valueOf(scavItems.get(0).get_id()));
-        scavName.setText(scavItems.get(0).get_name());
-        scavAddress.setText(scavItems.get(0).get_address());
-        scavDirections.setText(scavItems.get(0).get_directions());
-        scavImage.setImageResource(scavItems.get(0).get_image());
+
+        if (savedInstanceState != null) {
+            Log.i(TAG, "SavedInstanceState is not null");
+            int rowNumbertoDisplay = savedInstanceState.getInt("ID");
+            scavNumber.setText(" " + String.valueOf(scavItems.get(rowNumbertoDisplay).get_id()));
+            scavName.setText(scavItems.get(rowNumbertoDisplay).get_name());
+            scavAddress.setText(scavItems.get(rowNumbertoDisplay).get_address());
+            scavDirections.setText(scavItems.get(rowNumbertoDisplay).get_directions());
+            scavImage.setImageResource(scavItems.get(rowNumbertoDisplay).get_image());
+
+        }
+        else {
+
+            Log.i(TAG, "SavedInstanceState is null");
+            scavNumber.setText(" " + String.valueOf(scavItems.get(0).get_id()));
+            scavName.setText(scavItems.get(0).get_name());
+            scavAddress.setText(scavItems.get(0).get_address());
+            scavDirections.setText(scavItems.get(0).get_directions());
+            scavImage.setImageResource(scavItems.get(0).get_image());
+        }
 
         for (ScavItem cn : scavItems) {
             String log = "Id: "+cn.get_id()+" ,Name: " + cn.get_name() + " ,Address: " + cn.get_address() + " ,Directions: " + cn.get_directions() + " ,Image: " + cn.get_image();
@@ -77,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivityForResult(camera_intent,CAM_REQUEST);
             }
         });
+
     }
 
     public File getFile()
@@ -176,5 +191,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             i.putExtra("address", scavItems.get(rowNumbertoDisplay).get_address());
             startActivity(i);
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        Log.i(TAG, "Method: onSaveInstanceState");
+        TextView scavNumber = (TextView) findViewById(R.id.scavNumber);
+        int rowNumbertoDisplay = Integer.parseInt(((String) scavNumber.getText()).trim());
+
+
+        // Save the user's current game state
+        savedInstanceState.putInt("ID", rowNumbertoDisplay);
+        Log.i(TAG, " " + savedInstanceState.getInt("ID"));
+
+
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "Method: onSaveInstanceState");
+
     }
 }
