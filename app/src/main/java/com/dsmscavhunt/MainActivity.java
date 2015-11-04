@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         TextView scavNumber = (TextView)findViewById(R.id.scavNumber);
-        TextView scavName = (TextView)findViewById(R.id.scavName);
-        TextView scavAddress = (TextView)findViewById(R.id.scavAddress);
+        //TextView scavName = (TextView)findViewById(R.id.scavName);
+        //TextView scavAddress = (TextView)findViewById(R.id.scavAddress);
         TextView scavDirections = (TextView)findViewById(R.id.scavDirections);
         ImageView scavImage = (ImageView)findViewById(R.id.scavImage);
 
@@ -72,8 +72,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.i(TAG, "SavedInstanceState is not null");
             int rowNumbertoDisplay = savedInstanceState.getInt("ID");
             scavNumber.setText(" " + String.valueOf(scavItems.get(rowNumbertoDisplay).get_id()));
-            scavName.setText(scavItems.get(rowNumbertoDisplay).get_name());
-            scavAddress.setText(scavItems.get(rowNumbertoDisplay).get_address());
+            //scavName.setText(scavItems.get(rowNumbertoDisplay).get_name());
+            //scavAddress.setText(scavItems.get(rowNumbertoDisplay).get_address());
             scavDirections.setText(scavItems.get(rowNumbertoDisplay).get_directions());
             scavImage.setImageResource(scavItems.get(rowNumbertoDisplay).get_image());
 
@@ -82,8 +82,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             Log.i(TAG, "SavedInstanceState is null");
             scavNumber.setText(" " + String.valueOf(scavItems.get(0).get_id()));
-            scavName.setText(scavItems.get(0).get_name());
-            scavAddress.setText(scavItems.get(0).get_address());
+            //scavName.setText(scavItems.get(0).get_name());
+            //scavAddress.setText(scavItems.get(0).get_address());
             scavDirections.setText(scavItems.get(0).get_directions());
             scavImage.setImageResource(scavItems.get(0).get_image());
         }
@@ -166,8 +166,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             TextView scavNumber = (TextView) findViewById(R.id.scavNumber);
-            TextView scavName = (TextView) findViewById(R.id.scavName);
-            TextView scavAddress = (TextView) findViewById(R.id.scavAddress);
+            //TextView scavName = (TextView) findViewById(R.id.scavName);
+            //TextView scavAddress = (TextView) findViewById(R.id.scavAddress);
             TextView scavDirections = (TextView) findViewById(R.id.scavDirections);
             ImageView scavImage = (ImageView) findViewById(R.id.scavImage);
 
@@ -179,8 +179,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             scavNumber.setText(" " + String.valueOf(scavItems.get(rowNumbertoDisplay).get_id()));
-            scavName.setText(scavItems.get(rowNumbertoDisplay).get_name());
-            scavAddress.setText(scavItems.get(rowNumbertoDisplay).get_address());
+            //scavName.setText(scavItems.get(rowNumbertoDisplay).get_name());
+            //scavAddress.setText(scavItems.get(rowNumbertoDisplay).get_address());
             scavDirections.setText(scavItems.get(rowNumbertoDisplay).get_directions());
             scavImage.setImageResource(scavItems.get(rowNumbertoDisplay).get_image());
 
