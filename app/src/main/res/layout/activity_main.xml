@@ -80,16 +80,16 @@
         android:text="Name"
         android:id="@+id/scavName"
         android:layout_below="@+id/scavNumber"
+
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Latitude"
-        android:id="@+id/lat"
-        android:layout_below="@+id/scavNumber"
-        android:layout_marginTop="32dp" />
-
+        android:text="Check Picture"
+        android:id="@+id/checkButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClick" />
 
 </RelativeLayout>

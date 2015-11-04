@@ -45,6 +45,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
+
     }
 
 
