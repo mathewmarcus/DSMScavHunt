@@ -19,7 +19,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     // All member variables are static
     // Database Version
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     // Database Name
     private static final String DATABASE_NAME = "scavHunt";

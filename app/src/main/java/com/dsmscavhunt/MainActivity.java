@@ -114,11 +114,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Context context = getApplicationContext();
-        CharSequence text = "Activity Finished";
-        int duration = Toast.LENGTH_SHORT;
-        Toast result = Toast.makeText(context, text, duration);
-        result.show();
+//        Context context = getApplicationContext();
+//        CharSequence text = "Activity Finished";
+//        int duration = Toast.LENGTH_SHORT;
+//        Toast result = Toast.makeText(context, text, duration);
+//        result.show();
+        DBHandler dbh = new DBHandler(this);
+        int numRows = dbh.getScavItemCount();
+        List<ScavItem> scavItems = dbh.getAllScavItems();
+
+
+        TextView scavNumber = (TextView) findViewById(R.id.scavNumber);
+
+        int rowNumbertoDisplay = Integer.parseInt(((String) scavNumber.getText()).trim());
+
+        LatLng bulldogLatLng = stringToLatLong(scavItems.get(rowNumbertoDisplay).get_address());
+
+        Location bulldogLocation = new Location("test");
+        bulldogLocation.setLatitude(bulldogLatLng.latitude);
+        bulldogLocation.setLongitude(bulldogLatLng.longitude);
+
+        equals(bulldogLocation, myLocation, scavItems);
         }
 
     @Override
@@ -181,8 +197,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             int rowNumbertoDisplay = Integer.parseInt(((String) scavNumber.getText()).trim());
 
-            if (rowNumbertoDisplay > 9) {
-                rowNumbertoDisplay = 0;
+            if (rowNumbertoDisplay == 10) {
+                Intent i = new Intent(this, CallToAction.class);
+                startActivity(i);
             }
 
 
@@ -222,7 +239,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             bulldogLocation.setLatitude(bulldogLatLng.latitude);
             bulldogLocation.setLongitude(bulldogLatLng.longitude);
 
-            equals(bulldogLocation, myLocation);
+            equals(bulldogLocation, myLocation, scavItems);
         }
     }
 
@@ -279,7 +296,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void equals(Location bulldogLocation, Location currentLocation) {
+    public void equals(Location bulldogLocation, Location currentLocation, List<ScavItem> scavItems) {
         float radiusOfError = 100;
         Context context = getApplicationContext();
         CharSequence success = "Success!";
@@ -288,6 +305,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (bulldogLocation.distanceTo(currentLocation) <= radiusOfError) {
             Toast result = Toast.makeText(context, success, duration);
             result.show();
+
+            TextView scavNumber = (TextView) findViewById(R.id.scavNumber);
+            //TextView scavName = (TextView) findViewById(R.id.scavName);
+            //TextView scavAddress = (TextView) findViewById(R.id.scavAddress);
+            TextView scavDirections = (TextView) findViewById(R.id.scavDirections);
+            ImageView scavImage = (ImageView) findViewById(R.id.scavImage);
+
+            int rowNumbertoDisplay = Integer.parseInt(((String) scavNumber.getText()).trim());
+
+            if (rowNumbertoDisplay == 10) {
+                Intent i = new Intent(this, CallToAction.class);
+                startActivity(i);
+            }
+
+
+            scavNumber.setText(" " + String.valueOf(scavItems.get(rowNumbertoDisplay).get_id()));
+            //scavName.setText(scavItems.get(rowNumbertoDisplay).get_name());
+            //scavAddress.setText(scavItems.get(rowNumbertoDisplay).get_address());
+            scavDirections.setText(scavItems.get(rowNumbertoDisplay).get_directions());
+            scavImage.setImageResource(scavItems.get(rowNumbertoDisplay).get_image());
+
+            rowNumbertoDisplay++;
         }
         else {
             Toast result = Toast.makeText(context, failure, duration);
