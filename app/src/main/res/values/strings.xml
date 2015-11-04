@@ -11,4 +11,6 @@
     <string name="title_activity_maps">Map</string>
 
     <string name="take_photo">Take Photo!</string>
+    <string name="title_activity_call_to_action">CallToAction</string>
+    <string name="title_activity_start_screen">StartScreen</string>
 </resources>

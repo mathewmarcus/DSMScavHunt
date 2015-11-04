@@ -113,6 +113,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Context context = getApplicationContext();
+        CharSequence text = "Activity Finished";
+        int duration = Toast.LENGTH_SHORT;
+        Toast result = Toast.makeText(context, text, duration);
+        result.show();
+        }
+
     @Override
     protected void onResume() {
         super.onResume();
