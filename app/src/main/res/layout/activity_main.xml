@@ -21,8 +21,6 @@
         android:background="@drawable/camera"
         />
 
-
-
     <Button
         android:layout_width="200dp"
         android:layout_height="225dp"
