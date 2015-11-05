@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -119,6 +121,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        int duration = Toast.LENGTH_SHORT;
 //        Toast result = Toast.makeText(context, text, duration);
 //        result.show();
+
+        if (!isconnected()) {
+            Context context = getApplicationContext();
+            CharSequence error = "Network error. Please connect to a cell network or wifi and try again.";
+            int duration = Toast.LENGTH_LONG;
+
+            Toast result = Toast.makeText(context, error, duration);
+            result.show();
+            return;
+        }
+
         DBHandler dbh = new DBHandler(this);
         int numRows = dbh.getScavItemCount();
         List<ScavItem> scavItems = dbh.getAllScavItems();
@@ -200,6 +213,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (rowNumbertoDisplay == 10) {
                 Intent i = new Intent(this, CallToAction.class);
                 startActivity(i);
+                return;
             }
 
 
@@ -211,6 +225,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             rowNumbertoDisplay++;
         } else if (v.getId() == R.id.mapButton) {
+            if (!isconnected()) {
+                Context context = getApplicationContext();
+                CharSequence error = "Network error. Please connect to a cell network or wifi and try again.";
+                int duration = Toast.LENGTH_LONG;
+
+                Toast result = Toast.makeText(context, error, duration);
+                result.show();
+                return;
+            }
+
             DBHandler dbh = new DBHandler(this);
             int numRows = dbh.getScavItemCount();
             List<ScavItem> scavItems = dbh.getAllScavItems();
@@ -224,6 +248,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             i.putExtra("address", scavItems.get(rowNumbertoDisplay).get_address());
             startActivity(i);
         } else if (v.getId() == R.id.checkButton) {
+            if (!isconnected()) {
+                Context context = getApplicationContext();
+                CharSequence error = "Network error. Please connect to a cell network or wifi and try again.";
+                int duration = Toast.LENGTH_LONG;
+
+                Toast result = Toast.makeText(context, error, duration);
+                result.show();
+                return;
+            }
             DBHandler dbh = new DBHandler(this);
             int numRows = dbh.getScavItemCount();
             List<ScavItem> scavItems = dbh.getAllScavItems();
@@ -332,6 +365,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast result = Toast.makeText(context, failure, duration);
             result.show();
         }
+    }
+
+    public boolean isconnected() {
+        Context context = getApplicationContext();
+        ConnectivityManager cm =
+                (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+        return isConnected;
     }
 
     @Override
