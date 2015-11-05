@@ -64,7 +64,7 @@
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:id="@+id/scavTriangle"
         android:background="@drawable/triangles"
         android:layout_below="@+id/scavImage"
@@ -72,7 +72,7 @@
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         android:id="@+id/scavBar"
         android:background="@drawable/logobar"
         android:layout_alignParentTop="true"
