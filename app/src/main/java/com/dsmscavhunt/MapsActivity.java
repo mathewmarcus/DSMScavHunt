@@ -72,6 +72,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(scavDestination, 17.0f));
     }
 
+
     public LatLng stringToLatLong(String musicVenue) {
         Geocoder geo = new Geocoder(this);
         List<Address> venueAddressList = null;
