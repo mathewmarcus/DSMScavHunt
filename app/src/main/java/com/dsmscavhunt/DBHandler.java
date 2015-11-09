@@ -19,7 +19,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     // All member variables are static
     // Database Version
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 6;
 
     // Database Name
     private static final String DATABASE_NAME = "scavHunt";
@@ -48,7 +48,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String CREATE_SCAV_ITEMS_TABLE = "CREATE TABLE " + TABLE_SCAV_ITEMS + "("
                 + KEY_ID + " INTEGER PRIMARY KEY, "
                 + KEY_NAME + " TEXT UNIQUE,"
-                + KEY_ADDRESS + " TEXT UNIQUE,"
+                + KEY_ADDRESS + " TEXT,"
                 + KEY_DIRECTIONS + " TEXT UNIQUE,"
                 + KEY_IMAGE + " INTEGER UNIQUE" + ")";
 

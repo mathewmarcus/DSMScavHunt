@@ -56,16 +56,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         DBHandler dbh = new DBHandler(this);
 
 
-        dbh.addScavItem(new ScavItem("Aliber", "2847 University Avenue, Des Moines, IA 50311", "left", R.drawable.aliberbulldog));
-        dbh.addScavItem(new ScavItem("Meredith", "2805 University Avenue, Des Moines, IA 50311", "right", R.drawable.meredith));
-        dbh.addScavItem(new ScavItem("Olmsted (outside)", "2875 University Avenue, Des Moines, IA 50311", "diagonal", R.drawable.olmsted));
-        dbh.addScavItem(new ScavItem("Cheeseburger", "1315 30th Street, Des Moines, IA 50311", "straight", R.drawable.cheeseburger));
-        dbh.addScavItem(new ScavItem("West Village One", "1326 31st Street, Des Moines, IA 50311", "crooked", R.drawable.westvillage1));
-        dbh.addScavItem(new ScavItem("West Village Two", "1325 31st Street, Des Moines, IA 50311", "sharp left", R.drawable.westvillage2));
-        dbh.addScavItem(new ScavItem("Bookstore", "3003 Forest Ave, Des Moines, IA 50311", "sharp right", R.drawable.bulldog1));
-        dbh.addScavItem(new ScavItem("Lab Coat (Cline)", "2802 Forest Avenue, Des Moines, IA 50311", "merge right", R.drawable.labcoat));
-        dbh.addScavItem(new ScavItem("President", "2507 University Avenue, Des Moines, IA 50311", "merge left", R.drawable.president));
-        dbh.addScavItem(new ScavItem("Biker", "2507 University Avenue, IA 50311", "go in circles", R.drawable.biker));
+        dbh.addScavItem(new ScavItem("Aliber", "2847 University Avenue, Des Moines, IA 50311", "This bulldog means business, wearing the suit and tie of dogs - a simple black collar", R.drawable.aliberbulldog));
+        dbh.addScavItem(new ScavItem("Meredith", "2805 University Avenue, Des Moines, IA 50311", "A dog is a man’s best friend. You can find this jersey-wearing bulldog with Meredith", R.drawable.meredith));
+        dbh.addScavItem(new ScavItem("Olmsted (outside)", "2875 University Avenue, Des Moines, IA 50311", "Drake’s ‘signature’ bulldog lives right outside the campus hub for students", R.drawable.olmsted));
+        dbh.addScavItem(new ScavItem("Olmsted (inside)", "2875 University Avenue, Des Moines, IA 50311", "Riddle/Clue: A picture’s worth a thousand words? The bulldog, at home in the epicenter of student life, has a least a million things to say", R.drawable.westvillage2));
+        dbh.addScavItem(new ScavItem("Cheeseburger", "1315 30th Street, Des Moines, IA 50311", "You are what you eat. Or at least the cheeseburger bulldog is.", R.drawable.cheeseburger));
+        dbh.addScavItem(new ScavItem("West Village One", "1325 31st Street, Des Moines, IA 50311", "To the west, to the west. Every bulldog at the village to the west.", R.drawable.westvillage1));
+//        dbh.addScavItem(new ScavItem("West Village Two", "1325 31st Street, Des Moines, IA 50311", "sharp left", R.drawable.westvillage2));
+        dbh.addScavItem(new ScavItem("Bookstore", "3003 Forest Ave, Des Moines, IA 50311", "Need some cliff notes or textbooks? Find this bulldog buying his books", R.drawable.bulldog1));
+        dbh.addScavItem(new ScavItem("Lab Coat (Cline)", "2802 Forest Avenue, Des Moines, IA 50311", "Bulldogs in lab coats are inCLINEd to be more science-savvy than most.", R.drawable.labcoat));
+        dbh.addScavItem(new ScavItem("Stadium", "2719 Forest Avenue", "The ultimate Bulldog fan. Find this bronze bulldog that supports all athletic teams", R.drawable.president));
+        dbh.addScavItem(new ScavItem("Basketball", "2601 Forest Avenue, IA 50311", "Shivers me timbers. This bronze bulldog spends his time hanging with the basketball team", R.drawable.biker));
 
 
         List<ScavItem> scavItems = dbh.getAllScavItems();
