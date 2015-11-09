@@ -2,6 +2,7 @@ package com.dsmscavhunt;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -46,10 +47,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Typeface helvetica = Typeface.createFromAsset(getAssets(), "Helvetica.dfont");
+        TextView directionsView = (TextView) findViewById(R.id.scavDirections);
+        directionsView.setTypeface(helvetica);
 
         TextView scavNumber = (TextView)findViewById(R.id.scavNumber);
-        //TextView scavName = (TextView)findViewById(R.id.scavName);
-        //TextView scavAddress = (TextView)findViewById(R.id.scavAddress);
         TextView scavDirections = (TextView)findViewById(R.id.scavDirections);
         ImageView scavImage = (ImageView)findViewById(R.id.scavImage);
 
