@@ -13,4 +13,8 @@
     <string name="take_photo">Take Photo!</string>
     <string name="title_activity_call_to_action">CallToAction</string>
     <string name="title_activity_start_screen">StartScreen</string>
+
+    <string name="call_to_action_text">Share your funniest, most creative or favorite
+        photo to Facebook, Twitter or Instagram with </string>
+    <string name="hash_tag_text">#DuOrientation2016</string>
 </resources>
