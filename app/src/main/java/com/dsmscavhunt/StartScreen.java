@@ -1,10 +1,13 @@
 package com.dsmscavhunt;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class StartScreen extends AppCompatActivity {
@@ -14,8 +17,16 @@ public class StartScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_screen);
         Typeface helvetica = Typeface.createFromAsset(getAssets(), "Helvetica.dfont");
-        TextView helloTextView = (TextView) findViewById(R.id.helloText);
+        TextView helloTextView = (TextView) findViewById(R.id.openingInfo);
         helloTextView.setTypeface(helvetica);
+
+        Button button = (Button) findViewById(R.id.start_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(StartScreen.this, MainActivity.class);
+                startActivity(myIntent);
+            }
+        });
     }
 
     @Override

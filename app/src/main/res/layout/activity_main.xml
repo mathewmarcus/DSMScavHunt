@@ -98,7 +98,8 @@
         android:text="Directions"
         android:id="@+id/scavDirections"
         android:layout_below="@+id/scavNumber"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-30dp"/>
 
     <!-->
     <TextView
