@@ -10,12 +10,12 @@
         android:background="@drawable/endpagetext"/>
 
     <Button
-        android:layout_width="100dp"
-        android:layout_height="120dp"
+        android:layout_width="120dp"
+        android:layout_height="130dp"
         android:id="@+id/retry_button"
         android:layout_marginBottom="30dp"
+        android:layout_marginLeft="450dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:background="@drawable/startoverbutton"
         />
 

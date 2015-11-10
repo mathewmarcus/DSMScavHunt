@@ -44,7 +44,5 @@ Katie: Created the layout of the start screen
         android:layout_centerHorizontal="true"
         android:layout_marginTop="-40dp"/>
 
-
-
 </RelativeLayout>
 
