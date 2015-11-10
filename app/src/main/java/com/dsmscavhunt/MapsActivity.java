@@ -22,6 +22,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.List;
 
+/*
+    Mathew Marcus
+ */
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
@@ -49,15 +52,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -66,13 +60,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         Intent i = getIntent();
         String address = i.getStringExtra("address");
         LatLng scavDestination = stringToLatLong(address);
-        // Add a marker in Sydney and move the camera
+        // Add markers
         mMap.addMarker(new MarkerOptions().position(scavDestination).title("Bulldog"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(scavDestination));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(scavDestination, 17.0f));
     }
 
-
+    // Convert string street addresses into corresponding LatLng values
     public LatLng stringToLatLong(String musicVenue) {
         Geocoder geo = new Geocoder(this);
         List<Address> venueAddressList = null;
