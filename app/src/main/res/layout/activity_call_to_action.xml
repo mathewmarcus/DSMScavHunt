@@ -5,17 +5,19 @@
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="200dp"
-        android:id="@+id/scavTriangle"
-        android:background="@drawable/triangles"
-        android:layout_below="@+id/scavBar"
-        android:layout_marginTop="-60dp"/>
-
-
-    <ImageView
-        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/hash_tag_text"
         android:background="@drawable/endpagetext"/>
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:id="@+id/retry_button"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/startoverbutton"
+        />
+
 
 </RelativeLayout>

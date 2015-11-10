@@ -5,6 +5,4 @@
 
     <!-- Blake - Added dimensions for different pages -->
     <dimen name="button_width">200dp</dimen>
-    <dimen name="call_to_action_text">550dp</dimen>
-    <dimen name="hash_tag_text">750dp</dimen>
 </resources>
