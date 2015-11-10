@@ -201,34 +201,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // On click listener
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.nextButton) {
-
-            DBHandler dbh = new DBHandler(this);
-            int numRows = dbh.getScavItemCount();
-            List<ScavItem> scavItems = dbh.getAllScavItems();
-
-
-            TextView scavNumber = (TextView) findViewById(R.id.scavNumber);
-            TextView scavDirections = (TextView) findViewById(R.id.scavDirections);
-            ImageView scavImage = (ImageView) findViewById(R.id.scavImage);
-
-            int rowNumbertoDisplay = Integer.parseInt(((String) scavNumber.getText()).trim());
-
-            if (rowNumbertoDisplay == 10) {
-                Intent i = new Intent(this, CallToAction.class);
-                startActivity(i);
-                return;
-            }
-
-
-            scavNumber.setText(" " + String.valueOf(scavItems.get(rowNumbertoDisplay).get_id()));
-            //scavName.setText(scavItems.get(rowNumbertoDisplay).get_name());
-            //scavAddress.setText(scavItems.get(rowNumbertoDisplay).get_address());
-            scavDirections.setText(scavItems.get(rowNumbertoDisplay).get_directions());
-            scavImage.setImageResource(scavItems.get(rowNumbertoDisplay).get_image());
-
-            rowNumbertoDisplay++;
-        } else if (v.getId() == R.id.mapButton) { // Handles Map button clicks
+         if (v.getId() == R.id.mapButton) { // Handles Map button clicks
             if (!isconnected()) {
                 Context context = getApplicationContext();
                 CharSequence error = "Network error. Please connect to a cell network or wifi and try again.";
@@ -252,32 +225,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent i = new Intent(this, MapsActivity.class);
             i.putExtra("address", scavItems.get(rowNumbertoDisplay).get_address());
             startActivity(i);
-        } else if (v.getId() == R.id.checkButton) {
-            if (!isconnected()) {
-                Context context = getApplicationContext();
-                CharSequence error = "Network error. Please connect to a cell network or wifi and try again.";
-                int duration = Toast.LENGTH_LONG;
-
-                Toast result = Toast.makeText(context, error, duration);
-                result.show();
-                return;
-            }
-            DBHandler dbh = new DBHandler(this);
-            int numRows = dbh.getScavItemCount();
-            List<ScavItem> scavItems = dbh.getAllScavItems();
-
-
-            TextView scavNumber = (TextView) findViewById(R.id.scavNumber);
-
-            int rowNumbertoDisplay = Integer.parseInt(((String) scavNumber.getText()).trim());
-
-            LatLng bulldogLatLng = stringToLatLong(scavItems.get(rowNumbertoDisplay).get_address());
-
-            Location bulldogLocation = new Location("test");
-            bulldogLocation.setLatitude(bulldogLatLng.latitude);
-            bulldogLocation.setLongitude(bulldogLatLng.longitude);
-
-            equals(bulldogLocation, myLocation, scavItems);
         }
     }
 

@@ -38,14 +38,7 @@ Katie: Created the layout for the tasks
         android:onClick="onClick" />
 
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Next Item"
-        android:id="@+id/nextButton"
-        android:layout_toLeftOf="@+id/view"
-        android:layout_alignParentBottom="true"
-        android:onClick="onClick" />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -94,15 +87,6 @@ Katie: Created the layout for the tasks
         android:layout_centerHorizontal="true"
         android:layout_marginTop="-45dp"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Check Picture"
-        android:id="@+id/checkButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_toRightOf="@+id/view"
-        android:onClick="onClick" />
 
 </RelativeLayout>
 
