@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-->
+Katie: Created the layout for the tasks
+<-->
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,7 +14,7 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="225dp"
+        android:layout_width="200dp"
         android:layout_height="225dp"
         android:id="@+id/cam_button"
         android:layout_marginBottom="30dp"
@@ -18,13 +22,13 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_toLeftOf="@+id/view"
-        android:background="@drawable/camera"
+        android:background="@drawable/camerabutton"
         />
 
     <Button
         android:layout_width="200dp"
         android:layout_height="225dp"
-        android:background="@drawable/map"
+        android:background="@drawable/lostbutton"
         android:id="@+id/mapButton"
         android:layout_marginBottom="30dp"
         android:layout_marginLeft="30dp"
@@ -50,7 +54,8 @@
         android:text="Item"
         android:id="@+id/scavNumber"
         android:layout_below="@+id/scavTriangle"
-        android:layout_marginLeft="30dp"/>
+        android:layout_marginLeft="30dp"
+        android:textColor="#FFFFFF"/>
 
 
     <ImageView
@@ -76,20 +81,8 @@
         android:id="@+id/scavBar"
         android:background="@drawable/logobar"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="-20dp"/>
+        android:layout_marginTop="0dp"/>
 
-
-    <!-->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Address"
-        android:id="@+id/scavAddress"
-        android:layout_marginTop="117dp"
-        android:layout_alignTop="@+id/scavImage"
-        android:layout_toEndOf="@+id/scavNumber" />
-    <-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -99,18 +92,7 @@
         android:id="@+id/scavDirections"
         android:layout_below="@+id/scavNumber"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="-30dp"/>
-
-    <!-->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Name"
-        android:id="@+id/scavName"
-        android:layout_below="@+id/scavNumber"
-        android:layout_centerHorizontal="true" />
-     <-->
+        android:layout_marginTop="-45dp"/>
 
     <Button
         android:layout_width="match_parent"
