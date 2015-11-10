@@ -11,12 +11,11 @@
         android:layout_below="@+id/scavBar"
         android:layout_marginTop="-60dp"/>
 
+
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="120dp"
-        android:id="@+id/scavBar"
-        android:background="@drawable/logobar"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="-20dp"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/hash_tag_text"
+        android:background="@drawable/endpagetext"/>
 
 </RelativeLayout>
