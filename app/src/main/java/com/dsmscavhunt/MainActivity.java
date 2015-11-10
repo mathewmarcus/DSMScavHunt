@@ -51,35 +51,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView directionsView = (TextView) findViewById(R.id.scavDirections);
         directionsView.setTypeface(helvetica);
 
+        // Create view objects to store database contents
         TextView scavNumber = (TextView)findViewById(R.id.scavNumber);
         TextView scavDirections = (TextView)findViewById(R.id.scavDirections);
         ImageView scavImage = (ImageView)findViewById(R.id.scavImage);
 
+        // Access database
         DBHandler dbh = new DBHandler(this);
 
+        // Add items to database
+        dbh.addScavItem(new ScavItem("Aliber", "2847 University Avenue, Des Moines, IA 50311", "Task One: \n This bulldog means business, \n wearing the suit and tie of dogs \n - a simple black collar", R.drawable.aliberdog));
+        dbh.addScavItem(new ScavItem("Meredith", "2805 University Avenue, Des Moines, IA 50311", "Task Two: \n A dog is a man’s best friend. \n You can find this jersey-wearing \n bulldog with Meredith", R.drawable.meredithdog));
+        dbh.addScavItem(new ScavItem("Olmsted (outside)", "2875 University Avenue, Des Moines, IA 50311", "Task Three: \n Drake’s ‘signature’ bulldog lives right \n outside the campus hub for students", R.drawable.olmstedoutsidedog));
+        dbh.addScavItem(new ScavItem("Olmsted (inside)", "2875 University Avenue, Des Moines, IA 50311", "Task Four: \n A picture’s worth a thousand words? \n The bulldog, at home in the epicenter of \n student life, has a least a million things to say", R.drawable.olmstedinsidedog));
+        dbh.addScavItem(new ScavItem("Cheeseburger", "1315 30th Street, Des Moines, IA 50311", "Task Five: \n You are what you eat. \n Or at least the cheeseburger bulldog is.", R.drawable.hubbelldog));
+        dbh.addScavItem(new ScavItem("West Village One", "1325 31st Street, Des Moines, IA 50311", "Task Six: \n To the west, to the west. \n Every bulldog at the village to the west.", R.drawable.westvillagedog));
+        dbh.addScavItem(new ScavItem("Bookstore", "3003 Forest Ave, Des Moines, IA 50311", "Task Seven: \n Need some cliff notes or textbooks? \n Find this bulldog buying his books", R.drawable.bookstoredog));
+        dbh.addScavItem(new ScavItem("Lab Coat (Cline)", "2802 Forest Avenue, Des Moines, IA 50311", "Task Eight: \n Bulldogs in lab coats are inCLINEd \n to be more science-savvy than most.", R.drawable.clinedog));
+        dbh.addScavItem(new ScavItem("Stadium", "2719 Forest Avenue", "Task Nine: \n The ultimate Bulldog fan. \n Find this bronze bulldog that \n supports all athletic teams", R.drawable.stadiumdog));
+        dbh.addScavItem(new ScavItem("Basketball", "2601 Forest Avenue, IA 50311", "Task Ten: \n Shivers me timbers. \n This bronze bulldog spends his time \n hanging with the basketball team", R.drawable.basketballdog));
 
 
-        dbh.addScavItem(new ScavItem("Aliber", "2847 University Avenue, Des Moines, IA 50311", "This bulldog means business, \n wearing the suit and tie of dogs \n - a simple black collar", R.drawable.aliberdog));
-        dbh.addScavItem(new ScavItem("Meredith", "2805 University Avenue, Des Moines, IA 50311", "A dog is a man’s best friend. \n You can find this jersey-wearing \n bulldog with Meredith", R.drawable.meredithdog));
-        dbh.addScavItem(new ScavItem("Olmsted (outside)", "2875 University Avenue, Des Moines, IA 50311", "Drake’s ‘signature’ bulldog lives right \n outside the campus hub for students", R.drawable.olmstedoutsidedog));
-        dbh.addScavItem(new ScavItem("Olmsted (inside)", "2875 University Avenue, Des Moines, IA 50311", "A picture’s worth a thousand words? \n The bulldog, at home in the epicenter of \n student life, has a least a million things to say", R.drawable.olmstedinsidedog));
-        dbh.addScavItem(new ScavItem("Cheeseburger", "1315 30th Street, Des Moines, IA 50311", "You are what you eat. \n Or at least the cheeseburger bulldog is.", R.drawable.hubbelldog));
-        dbh.addScavItem(new ScavItem("West Village One", "1325 31st Street, Des Moines, IA 50311", "To the west, to the west. \n Every bulldog at the village to the west.", R.drawable.westvillagedog));
-        dbh.addScavItem(new ScavItem("Bookstore", "3003 Forest Ave, Des Moines, IA 50311", "Need some cliff notes or textbooks? \n Find this bulldog buying his books", R.drawable.bookstoredog));
-        dbh.addScavItem(new ScavItem("Lab Coat (Cline)", "2802 Forest Avenue, Des Moines, IA 50311", "Bulldogs in lab coats are inCLINEd \n to be more science-savvy than most.", R.drawable.clinedog));
-        dbh.addScavItem(new ScavItem("Stadium", "2719 Forest Avenue", "The ultimate Bulldog fan. \n Find this bronze bulldog that \n supports all athletic teams", R.drawable.stadiumdog));
-        dbh.addScavItem(new ScavItem("Basketball", "2601 Forest Avenue, IA 50311", "Shivers me timbers. \n This bronze bulldog spends his time \n hanging with the basketball team", R.drawable.basketballdog));
-
-
-
+        // Store items in list of ScavItem objects
         List<ScavItem> scavItems = dbh.getAllScavItems();
 
+         /*
+            If scav hunt is in progress, load current scav item,
+            else start the hunt from the beginning
+         */
         if (savedInstanceState != null) {
             Log.i(TAG, "SavedInstanceState is not null");
             int rowNumbertoDisplay = savedInstanceState.getInt("ID");
             scavNumber.setText(" " + String.valueOf(scavItems.get(rowNumbertoDisplay).get_id()));
-            //scavName.setText(scavItems.get(rowNumbertoDisplay).get_name());
-            //scavAddress.setText(scavItems.get(rowNumbertoDisplay).get_address());
             scavDirections.setText(scavItems.get(rowNumbertoDisplay).get_directions());
             scavImage.setImageResource(scavItems.get(rowNumbertoDisplay).get_image());
 
@@ -88,8 +91,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             Log.i(TAG, "SavedInstanceState is null");
             scavNumber.setText(" " + String.valueOf(scavItems.get(0).get_id()));
-            //scavName.setText(scavItems.get(0).get_name());
-            //scavAddress.setText(scavItems.get(0).get_address());
             scavDirections.setText(scavItems.get(0).get_directions());
             scavImage.setImageResource(scavItems.get(0).get_image());
         }
@@ -111,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        // Register Google API Client to listen for location
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -119,12 +121,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /* When camera intent fires, if the user is not connected to cell network or wifi, a toast
+        asks them to do so
+      */
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        Context context = getApplicationContext();
-//        CharSequence text = "Activity Finished";
-//        int duration = Toast.LENGTH_SHORT;
-//        Toast result = Toast.makeText(context, text, duration);
-//        result.show();
 
         if (!isconnected()) {
             Context context = getApplicationContext();
@@ -147,10 +147,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         LatLng bulldogLatLng = stringToLatLong(scavItems.get(rowNumbertoDisplay).get_address());
 
-        Location bulldogLocation = new Location("test");
+        Location bulldogLocation = new Location("scavItem");
         bulldogLocation.setLatitude(bulldogLatLng.latitude);
         bulldogLocation.setLongitude(bulldogLatLng.longitude);
 
+        // Check if location
         equals(bulldogLocation, myLocation, scavItems);
         }
 
@@ -197,6 +198,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
+    // On click listener
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.nextButton) {
@@ -207,8 +209,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             TextView scavNumber = (TextView) findViewById(R.id.scavNumber);
-            //TextView scavName = (TextView) findViewById(R.id.scavName);
-            //TextView scavAddress = (TextView) findViewById(R.id.scavAddress);
             TextView scavDirections = (TextView) findViewById(R.id.scavDirections);
             ImageView scavImage = (ImageView) findViewById(R.id.scavImage);
 
@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             scavImage.setImageResource(scavItems.get(rowNumbertoDisplay).get_image());
 
             rowNumbertoDisplay++;
-        } else if (v.getId() == R.id.mapButton) {
+        } else if (v.getId() == R.id.mapButton) { // Handles Map button clicks
             if (!isconnected()) {
                 Context context = getApplicationContext();
                 CharSequence error = "Network error. Please connect to a cell network or wifi and try again.";
@@ -248,6 +248,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             int rowNumbertoDisplay = Integer.parseInt(((String) scavNumber.getText()).trim());
 
+            // Pass address of current item to be displayed in MapsActivity
             Intent i = new Intent(this, MapsActivity.class);
             i.putExtra("address", scavItems.get(rowNumbertoDisplay).get_address());
             startActivity(i);
@@ -280,7 +281,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
+    // Saves the users current state in case if they leave the activity
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         Log.i(TAG, "Method: onSaveInstanceState");
@@ -316,6 +317,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.i(TAG, "Location services suspended. Please reconnect");
     }
 
+    // Convert string street addresses into corresponding LatLng values
     public LatLng stringToLatLong(String musicVenue) {
         Geocoder geo = new Geocoder(this);
         List<Address> venueAddressList = null;
@@ -333,6 +335,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /* Check if stored location equals location of user when he/she took a picture
+        Radius of error is set to allow the user to be within 100m of target
+     */
     public void equals(Location bulldogLocation, Location currentLocation, List<ScavItem> scavItems) {
         float radiusOfError = 100;
         Context context = getApplicationContext();
@@ -371,6 +376,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    // Check if network connection exists
     public boolean isconnected() {
         Context context = getApplicationContext();
         ConnectivityManager cm =
@@ -385,6 +391,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-
+        Log.i(TAG, "Location services unavailable. Please connect");
     }
 }

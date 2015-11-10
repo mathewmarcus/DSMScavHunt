@@ -5,18 +5,19 @@
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="200dp"
-        android:id="@+id/scavTriangle"
-        android:background="@drawable/triangles"
-        android:layout_below="@+id/scavBar"
-        android:layout_marginTop="-60dp"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/hash_tag_text"
+        android:background="@drawable/endpagetext"/>
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="120dp"
-        android:id="@+id/scavBar"
-        android:background="@drawable/logobar"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="-20dp"/>
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="130dp"
+        android:id="@+id/retry_button"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="450dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/startoverbutton"
+        />
+
 
 </RelativeLayout>

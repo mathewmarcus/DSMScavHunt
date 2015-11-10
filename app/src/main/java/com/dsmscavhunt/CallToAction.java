@@ -1,9 +1,12 @@
 package com.dsmscavhunt;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class CallToAction extends AppCompatActivity {
 
@@ -11,6 +14,15 @@ public class CallToAction extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_call_to_action);
+
+
+        Button button = (Button) findViewById(R.id.retry_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(CallToAction.this, StartScreen.class);
+                startActivity(myIntent);
+            }
+        });
     }
 
     @Override

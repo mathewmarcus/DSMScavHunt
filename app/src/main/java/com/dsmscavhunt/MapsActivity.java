@@ -3,14 +3,10 @@ package com.dsmscavhunt;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapsInitializer;
@@ -25,11 +21,9 @@ import java.util.List;
 /*
     Mathew Marcus
  */
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private GoogleApiClient mGoogleApiClient;
-    private Location myLocation = null;
     public static final String TAG = MapsActivity.class.getSimpleName();
 
     @Override
@@ -42,12 +36,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
 
     }
 
@@ -84,21 +72,4 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
-    @Override
-    public void onConnected(Bundle bundle) {
-        Log.i(TAG, "Location services connected.");
-        myLocation = LocationServices.FusedLocationApi.getLastLocation(
-                mGoogleApiClient);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom((new LatLng(myLocation.getLatitude(), myLocation.getLongitude())), 13.0f));
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-        Log.i(TAG, "Location services suspended. Please reconnect");
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-        Log.i(TAG, "Error. Location services failed");
-    }
 }

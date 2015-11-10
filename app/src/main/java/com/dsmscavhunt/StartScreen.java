@@ -16,10 +16,10 @@ public class StartScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_screen);
-        Typeface helvetica = Typeface.createFromAsset(getAssets(), "Helvetica.dfont");
-        TextView helloTextView = (TextView) findViewById(R.id.openingInfo);
-        helloTextView.setTypeface(helvetica);
 
+
+        //Katie: Created a button. When it is clicked it send the
+        //user to the first task
         Button button = (Button) findViewById(R.id.start_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
